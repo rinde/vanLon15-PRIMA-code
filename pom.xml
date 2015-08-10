@@ -28,7 +28,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<rinsim.version>4.0.0</rinsim.version>
 		<rinlog.version>2.0.0</rinlog.version>
-		<datgen.version>0.0.1</datgen.version>
+		<datgen.version>1.0.0</datgen.version>
 	</properties>
 
 	<build>
