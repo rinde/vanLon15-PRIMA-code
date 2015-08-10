@@ -14,7 +14,7 @@ This takes about 15 minutes on a 24 core machine. One can also use the generated
 
 ## Generated dataset files
 
-The generated dataset files can be downloaded here: ...
+The generated dataset files can be downloaded here: [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.27364.svg)](http://dx.doi.org/10.5281/zenodo.27364)
 
 Using RinSim it is possible to run an algorithm on the dataset. Example code that runs a centralized algorithm that randomly assigns parcels to vehicles:
 
@@ -87,3 +87,11 @@ Note that this command executes only prints the help options that are available,
 ## Results of experiment
 
 The raw results of the experiment can be found in [results](results/).
+
+## Dependencies:
+
+RinSim: [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.27360.svg)](http://dx.doi.org/10.5281/zenodo.27360)
+
+RinLog: [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.27361.svg)](http://dx.doi.org/10.5281/zenodo.27361)
+
+PDPTW Dataset Generator: [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.27362.svg)](http://dx.doi.org/10.5281/zenodo.27362)
