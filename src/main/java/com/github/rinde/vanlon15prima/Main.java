@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2011-2015 Rinde van Lon, iMinds-DistriNet, KU Leuven
+ * Copyright (C) 2015 Rinde van Lon, iMinds-DistriNet, KU Leuven
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,11 +20,14 @@ import static java.util.Arrays.asList;
 import com.github.rinde.datgen.pdptw.DatasetGenerator;
 
 /**
+ * This class generates the dataset.
  * @author Rinde van Lon
- *
  */
 public class Main {
-
+  /**
+   * Generate the dataset.
+   * @param args Ignored. 
+   */
   public static void main(String[] args) {
     final long time = System.currentTimeMillis();
     final DatasetGenerator generator = DatasetGenerator.builder()
@@ -32,7 +35,7 @@ public class Main {
       .setDynamismLevels(asList(.2, .5, .8))
       .setUrgencyLevels(asList(5L, 20L, 35L))
       .setScaleLevels(asList(1d, 5d, 10d))
-      .setNumInstances(10)
+      .setNumInstances(50)
       .build();
 
     generator.generate();

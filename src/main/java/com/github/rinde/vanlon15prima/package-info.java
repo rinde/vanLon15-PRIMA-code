@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2011-2015 Rinde van Lon, iMinds-DistriNet, KU Leuven
+ * Copyright (C) 2015 Rinde van Lon, iMinds-DistriNet, KU Leuven
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,4 +17,5 @@
  * 
  * @author Rinde van Lon
  */
+@javax.annotation.ParametersAreNonnullByDefault
 package com.github.rinde.vanlon15prima;
