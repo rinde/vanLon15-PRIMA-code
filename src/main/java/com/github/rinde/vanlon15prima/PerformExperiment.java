@@ -73,30 +73,30 @@ public final class PerformExperiment {
         .repeat(1)
         .addScenarios(FileProvider.builder()
             .add(Paths.get(DATASET))
-            .filter("glob:**[0-9].scen"))
+            .filter("glob:**[09].scen"))
         .addResultListener(new CommandLineProgress(System.out))
         .usePostProcessor(PostProcessors.statisticsPostProcessor())
         // central: cheapest insertion configuration
         .addConfiguration(Central.solverConfiguration(
-          CheapestInsertionHeuristic.supplier(SUM), "CheapInsert"))
+            CheapestInsertionHeuristic.supplier(SUM), "CheapInsert"))
         // central: random
         .addConfiguration(
-          Central.solverConfiguration(RandomSolver.supplier(), "Random"))
+            Central.solverConfiguration(RandomSolver.supplier()))
         // mas: auction cheapest insertion with 2-opt per vehicle
         .addConfiguration(MASConfiguration.pdptwBuilder()
             .setName("Auction-R-opt2cih-B-cih")
             .addEventHandler(AddVehicleEvent.class, new VehicleHandler(
                 SolverRoutePlanner.supplier(
-                  Opt2.breadthFirstSupplier(
-                    CheapestInsertionHeuristic.supplier(SUM), SUM)),
+                    Opt2.breadthFirstSupplier(
+                        CheapestInsertionHeuristic.supplier(SUM), SUM)),
                 SolverBidder.supplier(SUM,
-                  CheapestInsertionHeuristic.supplier(SUM))))
+                    CheapestInsertionHeuristic.supplier(SUM))))
             .addModel(SolverModel.builder())
             .addModel(AuctionCommModel.builder())
             .build());
 
     final Optional<ExperimentResults> results =
-      experimentBuilder.perform(System.out, args);
+        experimentBuilder.perform(System.out, args);
     final long duration = System.currentTimeMillis() - time;
     if (!results.isPresent()) {
       return;
@@ -106,7 +106,7 @@ public final class PerformExperiment {
         + " simulations in " + duration / 1000d + "s");
 
     final Multimap<MASConfiguration, SimulationResult> groupedResults =
-      LinkedHashMultimap.create();
+        LinkedHashMultimap.create();
     for (final SimulationResult sr : results.get().sortedResults()) {
       groupedResults.put(sr.getSimArgs().getMasConfig(), sr);
     }
@@ -125,9 +125,9 @@ public final class PerformExperiment {
       try {
         Files
             .append(
-              "dynamism,urgency,scale,cost,travel_time,tardiness,over_time,is_valid,scenario_id,random_seed,comp_time,num_vehicles,num_orders\n",
-              configResult,
-              Charsets.UTF_8);
+                "dynamism,urgency,scale,cost,travel_time,tardiness,over_time,is_valid,scenario_id,random_seed,comp_time,num_vehicles,num_orders\n",
+                configResult,
+                Charsets.UTF_8);
       } catch (final IOException e1) {
         throw new IllegalStateException(e1);
       }
@@ -143,7 +143,7 @@ public final class PerformExperiment {
           final String scenarioName = Joiner.on("-").join(pc, id);
           final List<String> propsStrings = Files.readLines(new File(
               DATASET + scenarioName + ".properties"),
-            Charsets.UTF_8);
+              Charsets.UTF_8);
           final Map<String, String> properties = Splitter.on("\n")
               .withKeyValueSeparator(" = ")
               .split(Joiner.on("\n").join(propsStrings));
@@ -162,14 +162,14 @@ public final class PerformExperiment {
           final long computationTime = stats.computationTime;
 
           final long numOrders =
-            Long.parseLong(properties.get("AddParcelEvent"));
+              Long.parseLong(properties.get("AddParcelEvent"));
 
           final String line = Joiner.on(",")
               .appendTo(new StringBuilder(),
-                asList(dynamism, urgencyMean, scale, cost, travelTime,
-                  tardiness, overTime, isValidResult, scenarioName,
-                  sr.getSimArgs().getRandomSeed(),
-                  computationTime, numVehicles, numOrders))
+                  asList(dynamism, urgencyMean, scale, cost, travelTime,
+                      tardiness, overTime, isValidResult, scenarioName,
+                      sr.getSimArgs().getRandomSeed(),
+                      computationTime, numVehicles, numOrders))
               .append(System.lineSeparator())
               .toString();
           if (!isValidResult) {
