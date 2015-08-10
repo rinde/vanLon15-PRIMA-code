@@ -23,20 +23,20 @@ import com.github.rinde.datgen.pdptw.DatasetGenerator;
  * This class generates the dataset.
  * @author Rinde van Lon
  */
-public class Main {
+public final class GenerateDataset {
   /**
    * Generate the dataset.
-   * @param args Ignored. 
+   * @param args Ignored.
    */
   public static void main(String[] args) {
     final long time = System.currentTimeMillis();
     final DatasetGenerator generator = DatasetGenerator.builder()
-      .setDatasetDir("files/dataset/")
-      .setDynamismLevels(asList(.2, .5, .8))
-      .setUrgencyLevels(asList(5L, 20L, 35L))
-      .setScaleLevels(asList(1d, 5d, 10d))
-      .setNumInstances(50)
-      .build();
+        .setDatasetDir("files/dataset/")
+        .setDynamismLevels(asList(.2, .5, .8))
+        .setUrgencyLevels(asList(5L, 20L, 35L))
+        .setScaleLevels(asList(1d, 5d, 10d))
+        .setNumInstances(50)
+        .build();
 
     generator.generate();
     final long duration = System.currentTimeMillis() - time;

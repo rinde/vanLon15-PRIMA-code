@@ -50,7 +50,7 @@
 				<configuration>
 					<header>LICENSE_HEADER</header>
 					<properties>
-						<owner>Rinde van Lon, iMinds DistriNet, KU Leuven</owner>
+						<owner>Rinde van Lon, iMinds-DistriNet, KU Leuven</owner>
 						<year>2015</year>
 					</properties>
 					<mapping>
@@ -95,24 +95,6 @@
 			<groupId>com.github.rinde</groupId>
 			<artifactId>datgen</artifactId>
 			<version>${datgen.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.auto.value</groupId>
-			<artifactId>auto-value</artifactId>
-			<version>1.1</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.truth</groupId>
-			<artifactId>truth</artifactId>
-			<version>0.27</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
 		</dependency>
 	</dependencies>
 </project>
